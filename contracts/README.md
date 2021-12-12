@@ -1,7 +1,4 @@
-# bsc-evm-compatible-bridge-contract
-Core bridge for evm compatible chains which is based on https://github.com/binance-chain/bsc-eth-swap.
 
-This project is part of Binance Smart Chain Hackathon : Build NFT Bridge Between EVM Compatible Chains hackathon [https://gitcoin.co/issue/binance-chain/grant-projects/2/100026811].
 
 ### Prepare configuration
 Please refer to example env file
@@ -42,6 +39,3 @@ $ npm run rinkeby:erc1155-deploy-agent
 
 The addresses of the deployed contracts will be in the chains folder which has chain ids as subfolders.
 
-## Specification
-
-Design spec: https://github.com/synycboom/bsc-evm-compatible-bridge
