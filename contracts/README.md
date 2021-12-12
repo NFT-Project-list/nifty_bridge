@@ -31,8 +31,8 @@ There are other useful commands to deploy contracts, see them in the package.jso
 
 ### Deploy to Rinkeby and BSC Test
 ```shell
-$ npm run bsctest:erc721-deploy-agent
-$ npm run bsctest:erc1155-deploy-agent
+$ npm run mumbai:erc721-deploy-agent
+$ npm run mumbai:erc1155-deploy-agent
 $ npm run rinkeby:erc721-deploy-agent
 $ npm run rinkeby:erc1155-deploy-agent
 ```
