@@ -1,0 +1,94 @@
+{
+  "key_manager_config": {
+    "key_type": "local_private_key",
+    "aws_region": "",
+    "aws_secret_name": "",
+    "hmac_key": "1234"
+  },
+  "db_config": {
+    "log_level": "WARN",
+    "dsn": "username:password@tcp(localhost:3306)/nft_bridge?charset=utf8mb4&parseTime=True&loc=Local"
+  },
+  "chain_configs": [{
+    "id": "1000",
+    "balance_monitor_interval": 60,
+    "balance_alert_threshold": "1000000000000000000",
+    "name": "CHAIN1",
+    "observer_fetch_interval": 1,
+    "start_height": 0,
+    "provider": "http://localhost:19545",
+    "private_key": "0000000000000000000000000000000000000000000000000000000000000001",
+    "confirm_num": 2,
+    "erc_721_swap_agent_addr": "0xDe09E74d4888Bc4e65F589e8c13Bce9F71DdF4c7",
+    "erc_1155_swap_agent_addr": "0x51a240271ab8ab9f9a21c82d9a85396b704e164d",
+    "explorer_url": "https://testnet.chain1.com/tx",
+    "max_track_retry": 5,
+    "wait_milli_sec_between_tx": 100
+  }, {
+    "id": "2000",
+    "balance_monitor_interval": 60,
+    "balance_alert_threshold": "1000000000000000000",
+    "name": "CHAIN2",
+    "observer_fetch_interval": 1,
+    "start_height": 0,
+    "provider": "http://localhost:19546",
+    "private_key": "0000000000000000000000000000000000000000000000000000000000000001",
+    "confirm_num": 2,
+    "erc_721_swap_agent_addr": "0xDe09E74d4888Bc4e65F589e8c13Bce9F71DdF4c7",
+    "erc_1155_swap_agent_addr": "0x51a240271ab8ab9f9a21c82d9a85396b704e164d",
+    "explorer_url": "https://testnet.chain2.com/tx",
+    "max_track_retry": 5,
+    "wait_milli_sec_between_tx": 100
+  },
+  {
+    "id": "4",
+    "balance_monitor_interval": 60,
+    "balance_alert_threshold": "1000000000000000000",
+    "name": "rinkeby",
+    "observer_fetch_interval": 1,
+    "start_height": 9696595,
+    "provider": "https://rinkeby.infura.io/v3/85eb07f1c5664b5e949fce320beb07a7",
+    "private_key": "0x5e75adad7a85442fee73273bff7fc23c0a710a8337d539205cb6569b5dc40d34",
+    "confirm_num": 2,
+    "erc_721_swap_agent_addr": "0xce39Fd878a4B2d255ECC2CC715D631a23923D39F",
+    "erc_1155_swap_agent_addr": "0xB1f9BF9b0e52c88D149d05aE1F34641504ee0516",
+    "explorer_url": "https://testnet.chain2.com/tx",
+    "max_track_retry": 5,
+    "wait_milli_sec_between_tx": 100
+  },
+  {
+    "id": "80001",
+    "balance_monitor_interval": 60,
+    "balance_alert_threshold": "1000000000000000000",
+    "name": "mumbai",
+    "observer_fetch_interval": 1,
+    "start_height": 22533106,
+    "provider": "https://rpc-mumbai.maticvigil.com",
+    "private_key": "0x5e75adad7a85442fee73273bff7fc23c0a710a8337d539205cb6569b5dc40d34",
+    "confirm_num": 2,
+    "erc_721_swap_agent_addr": "0xBF5Ce975f6c64E8CEF1697776184f3F57687D9aC",
+    "erc_1155_swap_agent_addr": "0x9CDbfaC149d444152d0DB48479bcf59a9bF7C1F2",
+    "explorer_url": "https://testnet.chain2.com/tx",
+    "max_track_retry": 5,
+    "wait_milli_sec_between_tx": 100
+  }
+],
+  "log_config": {
+    "level": "INFO",
+    "filename": "build/test.log",
+    "max_file_size_in_mb": 100,
+    "max_backups_of_log_files": 1,
+    "max_age_to_retain_log_files_in_days": 30,
+    "use_console_logger": true,
+    "use_file_logger": false,
+    "compress": false
+  },
+  "alert_config": {
+    "telegram_bot_id": "",
+    "telegram_chat_id": "",
+    "block_update_timeout": 10
+  },
+  "admin_config": {
+    "listen_addr": ":8000"
+  }
+}
