@@ -12,7 +12,7 @@ The NFT market is now worth more than $7 billion. That's a big increase from mon
 
 ![img](img/architecture.png)
 
-I have deployed two swap contracts on both ETH and POLYGON, then maintain a POLYGON-ETH swap service to handle token registrations and swap requests. To list an ERC721 token in this swap system, anyone can call the register method on ETH and the swap service will do some checks on it. Once all checks are passed, a [canonical ERC721/ERC1155 token](https://github.com/Pranav543/nifty_bridge/blob/main/contracts/contracts/tokens/MirroredERC721.sol) will be deployed. The name of the  token will append a postfix: “ mirrored from ETH”. Then users can swap their token bi-directionally.
+I have deployed two swap contracts on both ETH and POLYGON, then maintaining a POLYGON-ETH swap service to handle token registrations and swap requests. To list an ERC721 token in this swap system, anyone can call the register method on ETH and the swap service will do some checks on it. Once all checks are passed, a [canonical ERC721/ERC1155 token](https://github.com/Pranav543/nifty_bridge/blob/main/contracts/contracts/tokens/MirroredERC721.sol) will be deployed. The name of the  token will append a postfix: “ mirrored from ETH”. Then users can swap their token bi-directionally.
 
 ### Register
 

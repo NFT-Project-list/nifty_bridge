@@ -1,5 +1,4 @@
-
-
+This core backend service was inspired from the service that binance uses to transfer BNB tokens from Ethereum to BSC.
 
 ## Build
 
