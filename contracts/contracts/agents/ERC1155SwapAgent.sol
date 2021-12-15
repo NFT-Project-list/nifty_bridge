@@ -20,14 +20,16 @@ contract ERC1155SwapAgent is
     bytes4 private constant _ERC_1155_INTERFACE_ID = 0xd9b67a26;
 
     // -- Error Constants --
-    // ERC1155SwapAgent::registerSwapPair:: token does not conform ERC1155 standard 
+    // ERC1155SwapAgent::registerSwapPair:: token does not conform ERC1155 standard
     string private constant _ERR1155_REGISTER_NOT_1155 = "A1155.1155.1.1";
     // ERC1155SwapAgent::registerSwapPair:: token is already registered
     string private constant _ERR1155_REGISTER_TOKEN_EXISTS = "A1155.1155.1.2";
     // ERC1155SwapAgent::registerSwapPair:: empty token name
-    string private constant _ERR1155_REGISTER_EMPTY_TOKEN_NAME = "A1155.1155.1.3";
+    string private constant _ERR1155_REGISTER_EMPTY_TOKEN_NAME =
+        "A1155.1155.1.3";
     // ERC1155SwapAgent::registerSwapPair:: empty token symbol
-    string private constant _ERR1155_REGISTER_EMPTY_TOKEN_SYMBOL = "A1155.1155.1.4";
+    string private constant _ERR1155_REGISTER_EMPTY_TOKEN_SYMBOL =
+        "A1155.1155.1.4";
 
     // ERC1155SwapAgent::createSwapPair:: mirrored token is already deployed
     string private constant _ERR1155_CREATE_MIRRORED_EXISTS = "A1155.1155.2.1";
@@ -135,8 +137,8 @@ contract ERC1155SwapAgent is
         payable
     {
         require(
-          tokenAddr.supportsInterface(_ERC_1155_INTERFACE_ID),
-          _ERR1155_REGISTER_NOT_1155
+            tokenAddr.supportsInterface(_ERC_1155_INTERFACE_ID),
+            _ERR1155_REGISTER_NOT_1155
         );
 
         require(
@@ -150,12 +152,7 @@ contract ERC1155SwapAgent is
             payable(owner()).transfer(msg.value);
         }
 
-        emit SwapPairRegister(
-            msg.sender,
-            tokenAddr,
-            chainId,
-            msg.value
-        );
+        emit SwapPairRegister(msg.sender, tokenAddr, chainId, msg.value);
     }
 
     function swap(
@@ -172,7 +169,13 @@ contract ERC1155SwapAgent is
         // try forward swap
         if (registeredToken[dstChainId][tokenAddr]) {
             IERC1155 token = IERC1155(tokenAddr);
-            token.safeBatchTransferFrom(msg.sender, address(this), ids, amounts, "0x00");
+            token.safeBatchTransferFrom(
+                msg.sender,
+                address(this),
+                ids,
+                amounts,
+                "0x00"
+            );
 
             emit SwapStarted(
                 tokenAddr,
@@ -191,7 +194,13 @@ contract ERC1155SwapAgent is
         address dstTokenAddr = swapMappingOutgoing[dstChainId][tokenAddr];
         if (dstTokenAddr != address(0x0)) {
             IERC1155Mirrored mirroredToken = IERC1155Mirrored(tokenAddr);
-            mirroredToken.safeBatchTransferFrom(msg.sender, address(this), ids, amounts, "0x00");
+            mirroredToken.safeBatchTransferFrom(
+                msg.sender,
+                address(this),
+                ids,
+                amounts,
+                "0x00"
+            );
             mirroredToken.burnBatch(address(this), ids, amounts);
 
             emit BackwardSwapStarted(
@@ -227,7 +236,9 @@ contract ERC1155SwapAgent is
             fromTokenAddr
         ];
         if (mirroredTokenAddr != address(0x0)) {
-            IERC1155Mirrored mirroredToken = IERC1155Mirrored(mirroredTokenAddr);
+            IERC1155Mirrored mirroredToken = IERC1155Mirrored(
+                mirroredTokenAddr
+            );
             mirroredToken.mintBatch(recipient, ids, amounts, "0x00");
 
             emit SwapFilled(
@@ -248,7 +259,13 @@ contract ERC1155SwapAgent is
         // and assign the value to fromTokenAddr
         if (registeredToken[fromChainId][fromTokenAddr]) {
             IERC1155 token = IERC1155(fromTokenAddr);
-            token.safeBatchTransferFrom(address(this), recipient, ids, amounts, "0x00");
+            token.safeBatchTransferFrom(
+                address(this),
+                recipient,
+                ids,
+                amounts,
+                "0x00"
+            );
 
             emit BackwardSwapFilled(
                 swapTxHash,
